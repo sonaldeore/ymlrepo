@@ -1,0 +1,32 @@
+---
+- name: this is tes4 for installing webpkg
+  hosts: all
+  become: true
+  tasks:
+  - name: install httpd
+    yum:
+       name: httpd
+       state: installed
+    when: ansible_os_family == "Redhat"
+    notify: start httpd service
+
+  - name: install apche2
+    apt:
+      name: apache2
+      state: present
+    when: ansible_os_family == "Debain"
+    notify: start apache2 service
+
+  handlers:
+  - name: start httpd service
+    service:
+     name: httpd
+     state: started
+    when: ansible_os_family == "Redhat"
+
+  - name: start apache2 service
+    service:
+     name: apache2
+     state: started
+    when: ansible_os_family == "Debain"
+  

@@ -1,0 +1,9 @@
+---
+- name: myplaybook
+  hosts: all
+  become: true
+  tasks:
+    - name: install pacakges
+      yum:
+        name: ['git','make','gcc','wget','telnet','mysql','tree','which','docker']
+        state: installed

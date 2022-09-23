@@ -1,0 +1,20 @@
+---
+- name: this is tes4 for installing webpkg
+  hosts: all
+  become: true
+  tasks:
+  - name: install httpd
+    yum:
+       name: httpd
+       state: installed
+  
+  
+
+  - name: start httpd service
+    service:
+      name: httpd
+      state: started
+    
+
+
+   

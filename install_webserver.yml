@@ -1,0 +1,36 @@
+---
+- name: myplaybook
+  hosts: all
+  become: true
+  tasks:
+    - name: install httpd package
+      yum:
+        name: httpd
+        state: installed
+      when: ansible_os_family == "Redhat"
+
+    - name: start httpd service
+      service:
+        name: http..
+        state: started
+      when: ansible_os_family == "Redhat"
+      ignore_errors: yes
+
+    - name: install apache2 pacakge
+      service:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+      
+    - name: start apache2 service
+      service:
+        name: apache2
+        state: started
+      when: ansible_os_family == "Debian"
+
+    - name: copy file 
+      copy:
+        src: /home/ansadmin/index.html
+        dest: /var/www/html
+        mode: 0666

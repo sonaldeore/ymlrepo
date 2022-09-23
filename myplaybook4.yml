@@ -1,0 +1,9 @@
+---
+- name: this is test2
+  hosts: all
+  become: true
+  tasks:
+  - name: creating a dir
+    file:
+      path: /home/ansadmin/dir
+      state: absent

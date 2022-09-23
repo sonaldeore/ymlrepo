@@ -1,0 +1,9 @@
+---
+- name: this is test3 playbook
+  hosts: all
+  become: true
+  tasks:
+  - name: installing tree pkg
+    yum:
+      name: tree
+      state: installed

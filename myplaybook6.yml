@@ -1,0 +1,11 @@
+---
+- name: this is my tes3 playbook
+  hosts: all
+  become: true
+  tasks:
+  - name: copying file
+    copy:
+      src: /home/ansadmin/index.html
+      dest: /home/ansadmin
+      mode: 0600
+      owner: rushi
